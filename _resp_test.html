@@ -1,0 +1,23 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{margin:0;font:12px monospace}iframe{border:0;display:block}</style></head><body>
+<pre id="out">running</pre>
+<script>
+const widths=[320,360];
+const out=[];let i=0;
+function next(){
+  if(i>=widths.length){document.getElementById('out').textContent=out.join('\n');return;}
+  const w=widths[i++];const f=document.createElement('iframe');f.style.width=w+'px';f.style.height='900px';f.src='index.html?t='+w;
+  setTimeout(()=>{try{
+    const d=f.contentDocument, W=d.documentElement.clientWidth;
+    const sw=d.documentElement.scrollWidth;
+    const offenders=[];
+    d.querySelectorAll('body *').forEach(el=>{const r=el.getBoundingClientRect();if(r.width>0&&(r.right>W+1||r.left<-1)){
+      const cs=getComputedStyle(el);if(cs.position==='fixed')return;
+      let p=el.parentElement,clipped=false;while(p&&p!==d.body){const o=getComputedStyle(p);if(o.overflowX!=='visible'){const pr=p.getBoundingClientRect();if(pr.right<=W+1&&pr.left>=-1){clipped=true;break;}}p=p.parentElement;}
+      if(!clipped)offenders.push((el.className&&typeof el.className==='string'?'.'+el.className.split(' ').slice(0,2).join('.'):el.tagName)+' ['+Math.round(r.left)+'→'+Math.round(r.right)+']');}});
+    document.getElementById('out').textContent='progress '+w;out.push(w+'px: scrollWidth '+sw+' / viewport '+W+(sw>W?'  ← HORIZONTAL SCROLL':'  ok')+(offenders.length?'\n   overflow: '+[...new Set(offenders)].slice(0,12).join(', '):''));
+    }catch(e){out.push(w+'px ERROR '+e.message);}
+    f.remove();next();},5000);
+  document.body.appendChild(f);
+}
+document.getElementById('out').textContent='started';next();
+</script></body></html>

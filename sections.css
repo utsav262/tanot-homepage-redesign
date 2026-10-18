@@ -335,3 +335,45 @@ html.lenis.lenis-smooth{scroll-behavior:auto!important}
 @media(max-width:480px){.pay-step-label{font-size:12px}.pay-pill{padding:3px 7px;font-size:10px}}
 #why-tanot .advantage-main .advantage-symbol{display:none}
 #why-tanot .advantage-main h3{margin-top:24px}
+
+/* ===== Square UI: no rounded corners anywhere ===== */
+*,*:before,*:after{border-radius:0!important}
+/* Keep true circles: initials avatars and tiny status dots */
+.review-avatar,.team-grid .review-avatar{border-radius:50%!important}
+.eyebrow>i,.cta-kicker i,.legal-trust i,.security-note i,.footer-status i,.projection-foot i{border-radius:50%!important}
+
+/* Video review card: extra context + real stats */
+.video-review-more{margin:0;color:#dbe7ff;font-size:14px;line-height:1.7}
+.video-review-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;margin:2px 0 0;padding:0;list-style:none;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.18)}
+.video-review-stats li{display:flex;flex-direction:column;gap:2px;padding:12px 14px;background:rgba(12,74,115,.35)}
+.video-review-stats b{color:#fff;font-size:20px;font-weight:700;line-height:1.1}
+.video-review-stats span{color:#c7d8ff;font-size:11px;line-height:1.35}
+@media(max-width:480px){.video-review-stats b{font-size:17px}.video-review-stats li{padding:10px}}
+/* Typewriter keeps a screen-reader copy; exclude it from text selection so copying doesn't duplicate */
+.video-review-copy .sr-only{user-select:none;-webkit-user-select:none}
+
+/* ===== Phone refinements (checked at 360–414px) ===== */
+@media(max-width:600px){
+  /* Hero label: wrap the bracketed part onto its own line instead of two cramped columns */
+  .hero .eyebrow{flex-wrap:wrap;align-items:center;row-gap:4px;line-height:1.4}
+  .hero .eyebrow span{flex-basis:100%;padding-left:16px}
+  /* Awards: 2 x 2 instead of four full-screen tiles */
+  .award-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .award-copy{padding:12px 12px 14px}
+  .award-copy b{font-size:13px}
+  .award-copy span{font-size:8.5px;letter-spacing:.06em}
+  .award-img.contain img{padding:6px}
+  /* Founder: centred photo, full-width buttons */
+  .founder-photo{margin:0 auto;max-width:260px}
+  .founder-actions{flex-direction:column}
+  .founder-actions .button{width:100%}
+  /* Team: compact 2 x 2 */
+  .team-block{margin-top:40px;padding-top:32px}
+  .team-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .team-grid li{flex-direction:column;align-items:flex-start;gap:8px;padding:12px}
+  .team-grid b{font-size:13px}.team-grid small{font-size:11px;line-height:1.35;display:block}
+  /* Featured: centre the odd logo out on the last row */
+  .featured-list li:last-child:nth-child(odd){grid-column:1/-1}
+  /* Video card stats stay readable */
+  .video-review-copy{padding:22px 18px}
+}
