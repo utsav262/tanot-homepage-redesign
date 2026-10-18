@@ -1,0 +1,337 @@
+/* Sections added to the alternate UI: video review, awards, team, featured, FAQ, blog.
+   Same tokens as style.css: navy #0a0f1d, blue #1577b5, Space Mono labels, Plus Jakarta headings. */
+
+/* Shared section label (matches .eyebrow-light) */
+.section-kicker{margin:11px 0 12px;color:#6b7b92;font:700 10px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.section-heading h2 span.accent{color:var(--blue)}
+
+/* Header: live-site dropdowns use buttons */
+.nav-dropdown>button{display:flex;align-items:center;gap:7px;padding:0;border:0;background:none;color:#485467;font-size:13px;font-weight:600;white-space:nowrap}
+.nav-dropdown>button:hover{color:var(--blue)}
+@media(max-width:700px){.nav-dropdown>button{width:100%;justify-content:space-between;padding:11px 10px;border-bottom:1px solid #edf0f4;font-size:13px}}
+
+/* Reviews: video feature + three identical cards */
+.video-review{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);margin-bottom:13px;overflow:hidden;border:1px solid #34527f;border-radius:9px;background:linear-gradient(145deg,#1a2c49,#121d32)}
+.video-review iframe{display:block;width:100%;aspect-ratio:16/9;height:auto;border:0;background:#000}
+.video-review-copy{display:flex;flex-direction:column;justify-content:center;gap:16px;padding:28px}
+.video-review-copy blockquote{margin:0;color:#eef3fa;font:700 20px/1.4 var(--display);letter-spacing:-.02em}
+.video-review-copy .review-by{margin-top:0;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+.review-grid{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
+.review-feature{grid-column:auto}
+@media(max-width:900px){.video-review{grid-template-columns:1fr}.review-grid{grid-template-columns:1fr}.review-feature{grid-column:auto}}
+
+/* Services: six identical cards, 3 x 2 */
+.service-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.service-card{min-height:0}
+.icon-local{background:linear-gradient(145deg,#fff6ec,#fdebd8)!important;border-color:#f6e2cb!important;color:#b45309}
+.icon-content{background:linear-gradient(145deg,#f5f1ff,#ece5fd)!important;border-color:#e4dcfa!important;color:#6d28d9}
+@media(max-width:1180px){.service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.service-grid{grid-template-columns:1fr}}
+
+/* Why Tanot: main card spans two rows, four cards beside it, wide card across the bottom */
+.advantage-grid{grid-template-rows:auto}
+.advantage-main{grid-row:span 2}
+.advantage-grid .advantage-wide{grid-column:1/-1}
+@media(max-width:480px){.advantage-main{grid-row:auto}}
+
+/* Awards */
+.awards-section{background:#f5f8fc}
+.award-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin:0;padding:0;list-style:none}
+.award-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid #dce5f0;border-radius:10px;background:#fff;box-shadow:0 7px 22px rgba(18,42,76,.055);transition:transform .3s cubic-bezier(.2,.75,.25,1),border-color .3s,box-shadow .3s}
+.award-card:hover{transform:translateY(-5px);border-color:#9bb9ea;box-shadow:0 18px 38px rgba(23,62,117,.12)}
+.award-img{aspect-ratio:4/3;overflow:hidden;border-bottom:1px solid #e6edf5;background:#fff}
+.award-img img{display:block;width:100%;height:100%}
+.award-img.cover img{object-fit:cover;object-position:center 30%}
+.award-img.contain img{object-fit:contain;padding:12px}
+.award-copy{display:grid;gap:6px;padding:16px 18px 18px}
+.award-copy span{color:#1577b5;font:700 10px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.award-copy b{color:#13213a;font:700 16px/1.35 var(--display);letter-spacing:-.02em}
+@media(max-width:1000px){.award-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.award-grid{grid-template-columns:1fr}}
+
+/* Founder: real photo instead of monogram, plus team */
+.founder-inner{grid-template-columns:320px minmax(0,1fr);gap:64px}
+.founder-photo{position:relative;margin:0}
+.founder-photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center top;border:1px solid #e4e9f0;border-radius:10px;background:#e2e6ea}
+.founder-photo figcaption{position:absolute;left:14px;bottom:14px;padding:6px 10px;border-radius:5px;background:rgba(10,15,29,.82);color:#dbe5f3;font:700 9px var(--mono);letter-spacing:.1em}
+.founder-copy>p:not(.eyebrow-light){font-size:15px;line-height:1.75}
+.founder-actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:22px}
+.button-dark{background:#0a0f1d;color:#fff}.button-dark:hover{background:#1e293b}
+.team-block{margin-top:56px;padding-top:40px;border-top:1px solid #e3e9f1}
+.team-block h3{margin:0 0 20px;color:#14213a;font:800 20px var(--display);letter-spacing:-.03em}
+.team-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px;margin:0;padding:0;list-style:none}
+.team-grid li{display:flex;align-items:center;gap:12px;padding:14px;border:1px solid #e1e8f1;border-radius:8px;background:#fff}
+.team-grid .review-avatar{width:44px;height:44px;font-size:12px}
+.team-grid b{display:block;color:#13213a;font-size:14px}
+.team-grid small{color:#64748b;font-size:12px}
+@media(max-width:900px){.founder-inner{grid-template-columns:240px minmax(0,1fr);gap:36px}.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.founder-inner{grid-template-columns:1fr}.founder-photo{max-width:280px}.team-grid{grid-template-columns:1fr}}
+
+/* Featured on: its own navy band */
+.featured-section{padding:48px 0;background:#0a0f1d;border-top:1px solid rgba(255,255,255,.06)}
+.featured-inner{display:grid;grid-template-columns:200px minmax(0,1fr);align-items:center;gap:32px}
+.featured-inner .section-index{color:#82a7ed}
+.featured-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
+.featured-list li{height:64px;display:grid;place-items:center;border:1px solid rgba(148,178,220,.2);border-radius:8px;background:linear-gradient(145deg,#141f34,#101727);color:#cbd5e1;font:800 17px var(--display);letter-spacing:-.01em}
+.featured-list li.ph{border-style:dashed;color:#7e8ea6;font:500 12px var(--sans)}
+@media(max-width:900px){.featured-inner{grid-template-columns:1fr;gap:18px}}
+@media(max-width:600px){.featured-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* FAQ */
+.faq-inner{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(36px,6vw,90px);align-items:start}
+.faq-inner .section-heading{margin-bottom:24px}
+.faq-cta{padding:24px;border:1px solid rgba(99,172,74,.25);border-radius:10px;background:radial-gradient(circle at top right,#1e293b,#0a0f1d 70%);color:#fff}
+.faq-cta b{display:block;font:800 18px var(--display);letter-spacing:-.02em}
+.faq-cta p{margin:8px 0 18px;color:#cbd5e1;font-size:14px;line-height:1.65}
+.faq-list{border-top:1px solid #e3e9f1}
+.faq-list details{border-bottom:1px solid #e3e9f1}
+.faq-list summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:16px 0;color:#13213a;font:700 16px/1.4 var(--display);letter-spacing:-.015em;list-style:none;cursor:pointer}
+.faq-list summary::-webkit-details-marker{display:none}
+.faq-list summary:after{flex:none;width:30px;height:30px;display:grid;place-items:center;border-radius:50%;background:#eaf5fb;color:#1577b5;font:400 20px/1 var(--sans);content:"+";transition:transform .2s,background .2s,color .2s}
+.faq-list details[open] summary:after{transform:rotate(45deg);background:#1577b5;color:#fff}
+.faq-list details p{margin:0;padding:0 48px 22px 0;color:#596a80;font-size:14px;line-height:1.75}
+@media(max-width:900px){.faq-inner{grid-template-columns:1fr}}
+
+/* Blog: soft green from the logo */
+.blog-section{background:#f1f8ed}
+.blog-section .section-index,.blog-section .eyebrow-light{color:#3d8228}
+.blog-section .section-heading h2 span{color:#3d8228}
+.blog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.blog-card{display:flex;flex-direction:column;overflow:hidden;border:1px solid #d6ebcd;border-radius:10px;background:#fff;transition:transform .3s cubic-bezier(.2,.75,.25,1),box-shadow .3s}
+.blog-card:hover{transform:translateY(-5px);box-shadow:0 18px 38px rgba(61,130,40,.1)}
+.blog-thumb{aspect-ratio:16/9;display:grid;place-items:center;background:#e2f1db;color:#4f6b45;font:700 10px var(--mono);letter-spacing:.1em}
+.blog-body{display:flex;flex:1;flex-direction:column;gap:10px;padding:18px 20px 20px}
+.blog-tag{align-self:flex-start;padding:4px 9px;border-radius:4px;background:#e3f2dc;color:#3d8228;font:700 10px var(--mono);letter-spacing:.08em;text-transform:uppercase}
+.blog-body h3{flex:1;margin:0;color:#13213a;font:700 17px/1.4 var(--display);letter-spacing:-.02em}
+.blog-body small{color:#64748b;font-size:12px}
+.blog-link{color:#3d8228;font-size:13px;font-weight:700}
+@media(max-width:900px){.blog-grid{grid-template-columns:1fr}}
+
+/* Fixes after visual check */
+/* One heading scale: case study and closing CTA were 52-64px, the client's "heading too big" issue */
+.case-copy h2{font-size:clamp(30px,3.2vw,42px);line-height:1.12}
+.footer-cta h2{font-size:clamp(30px,3.6vw,46px);line-height:1.1}
+@media(max-width:700px){.case-copy h2,.footer-cta h2{font-size:32px}}
+/* Card labels sat on top of the icons */
+.advantage-card:not(.advantage-main){padding-top:52px}
+.advantage-wide .advantage-id{top:18px}
+/* Intro text was too dim on navy */
+.why-section .section-intro,.reviews-section .review-rating>p{color:#cbd5e1}
+/* Founder photo: height attribute was overriding the 4:5 ratio */
+.founder-photo img{height:auto}
+/* Mobile header CTA: arrow-only button (a later .button rule was overriding font-size:0) */
+@media(max-width:700px){.nav-actions .nav-cta{width:38px;min-height:38px;padding:0;font-size:0}.nav-actions .nav-cta span{font-size:16px}.menu-toggle{margin-left:auto}}
+/* Strategy form: live-site fields */
+.audit-step label{margin-top:12px}.audit-step label:first-child,.audit-name-row label{margin-top:0}
+.audit-name-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.audit-step .audit-next{margin-top:16px}
+/* Strategy form: single step, same fields and order as the live site */
+.audit-step label{display:block;margin:12px 0 6px;font:600 12px var(--sans);letter-spacing:0;color:#26364d}
+.audit-name-row label{margin-top:0}
+.audit-name-row{margin-bottom:0}
+.req{color:#c2413a}
+.audit-submit{width:100%;margin-top:6px}
+#form-error{min-height:16px;margin:8px 0 0}
+.audit-card .audit-lede{margin-bottom:20px;padding-bottom:18px;border-bottom:1px solid #edf0f4}
+/* Video review copy (description until the transcript quote is available) */
+.video-review-label{color:#7fb2ff;font-size:10px;letter-spacing:.12em}
+.video-review-title{margin:0;color:#fff;font:800 clamp(22px,2.2vw,28px)/1.2 var(--display);letter-spacing:-.03em}
+.video-review-text{margin:0;color:#cbd5e1;font-size:15px;line-height:1.7}
+/* As Featured On: real publication logos, all white and the same visual height */
+.featured-inner{grid-template-columns:170px minmax(0,1fr) auto}
+.featured-list li{padding:0 18px}
+.featured-list img{display:block;max-width:100%;height:26px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.82;transition:opacity .2s}
+.featured-list li:hover img{opacity:1}
+.featured-list img[alt="Forbes"]{height:24px}
+.featured-list img[alt="GoDaddy"]{height:24px}
+/* The Tribune is a JPG on white: invert it and screen-blend so only the white lettering shows */
+.featured-list img.logo-raster{height:30px;filter:invert(1) grayscale(1) contrast(1.4);mix-blend-mode:screen}
+.featured-more{margin:0;color:#8ea0ba;font-size:13px;white-space:nowrap}
+@media(max-width:1000px){.featured-inner{grid-template-columns:1fr}.featured-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){.featured-list{grid-template-columns:repeat(2,minmax(0,1fr))}.featured-list img{height:22px}}
+
+/* Why Tanot: light theme (was the third navy section in a row) */
+#why-tanot{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,#f5f8fd 0%,#eaf5fb 100%);color:var(--ink)}
+#why-tanot:before{position:absolute;z-index:-1;top:-180px;right:-140px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(26,140,208,.08),transparent 68%);content:""}
+#why-tanot .section-index{color:#1577b5}
+#why-tanot .eyebrow-light{color:#64748b}
+#why-tanot .section-heading h2{color:#0a0f1d}
+#why-tanot .section-heading h2 span{color:#1577b5}
+#why-tanot .section-intro{color:#475569}
+/* Cards */
+#why-tanot .advantage-card{border:1px solid #dce5f0;background:#fff;box-shadow:0 8px 24px rgba(18,42,76,.06)}
+#why-tanot .advantage-card:after{background:radial-gradient(circle,rgba(26,140,208,.07),transparent 70%);opacity:1}
+#why-tanot .advantage-card:hover{border-color:#9bb9ea;background:#fff;box-shadow:0 20px 44px rgba(23,62,117,.12)}
+#why-tanot .advantage-id{color:#64748b}
+#why-tanot .advantage-card h3{color:#0f1b33}
+#why-tanot .advantage-card p{color:#475569}
+#why-tanot .advantage-symbol{border-color:#cfe5f4;background:linear-gradient(145deg,#eaf5fb,#ddeff9);color:#1577b5}
+#why-tanot .advantage-card:hover .advantage-symbol{background:linear-gradient(145deg,#1577b5,#126da8);color:#fff;box-shadow:0 8px 20px rgba(26,140,208,.25)}
+/* Main card: strong blue so the key promise stands out */
+#why-tanot .advantage-main{border-color:#126da8;background:radial-gradient(circle at 80% 10%,rgba(255,255,255,.16),transparent 45%),linear-gradient(150deg,#1577b5 0%,#126da8 55%,#0c4a73 100%);box-shadow:0 22px 50px rgba(26,140,208,.28)}
+#why-tanot .advantage-main:hover{background:radial-gradient(circle at 80% 10%,rgba(255,255,255,.2),transparent 45%),linear-gradient(150deg,#1a8cd0 0%,#1577b5 55%,#0c4a73 100%);border-color:#126da8}
+#why-tanot .advantage-main:before{border-color:rgba(255,255,255,.18);box-shadow:0 0 0 26px rgba(255,255,255,.05),0 0 0 54px rgba(255,255,255,.03)}
+#why-tanot .advantage-main .advantage-id{color:#c7d8ff}
+#why-tanot .advantage-main h3{color:#fff}
+#why-tanot .advantage-main h3 em{color:#bfe3ff}
+#why-tanot .advantage-main p{color:#dbe7ff}
+#why-tanot .advantage-main .advantage-symbol{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.14);color:#fff}
+#why-tanot .advantage-main>a{color:#fff;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:3px}
+/* Wide card: pale blue with the retention stat */
+#why-tanot .advantage-wide{border-color:#c9e1f1;background:linear-gradient(120deg,#ffffff 0%,#e6f3fb 100%)}
+#why-tanot .advantage-proof{border-left-color:#c9e1f1}
+#why-tanot .advantage-proof b{color:#1577b5}
+#why-tanot .advantage-proof small{color:#64748b}
+#why-tanot .advantage-proof{gap:12px;padding-left:24px}
+#why-tanot .advantage-proof b{font-size:36px;line-height:1}
+#why-tanot .advantage-proof small{font-size:12px;line-height:1.45}
+/* Keep neighbouring light sections visibly separate */
+.awards-section{background:#fff}
+.founder-section{border-top:1px solid #e8edf3}
+
+/* Reviews: light theme, matching Why Tanot */
+#reviews{background:#fff;color:var(--ink)}
+#reviews .section-index{color:#1577b5}
+#reviews .eyebrow-light{color:#64748b}
+#reviews .section-heading h2{color:#0a0f1d}
+#reviews .section-heading h2 span{color:#1577b5}
+/* Rating block */
+#reviews .review-rating{border-left-color:#e2e8f0}
+#reviews .rating-score{color:#0a0f1d}
+#reviews .rating-score span{color:#f59e0b}
+#reviews .review-rating>p{color:#475569}
+#reviews .rating-sources span{border-color:#cfe5f4;background:#eef7fc;color:#126da8}
+/* Video card: white frame, blue copy panel like the Why Tanot main card */
+#reviews .video-review{border-color:#126da8;background:#fff;box-shadow:0 22px 50px rgba(26,140,208,.18)}
+#reviews .video-review-copy{background:radial-gradient(circle at 85% 10%,rgba(255,255,255,.16),transparent 45%),linear-gradient(150deg,#1577b5 0%,#126da8 55%,#0c4a73 100%)}
+#reviews .video-review-label{color:#c7d8ff}
+#reviews .video-review-text{color:#dbe7ff}
+#reviews .video-review-copy .review-by{border-top-color:rgba(255,255,255,.22)}
+#reviews .video-review-copy .review-by b{color:#fff}
+#reviews .video-review-copy .review-by small{color:#c7d8ff}
+#reviews .video-review-copy .review-avatar{background:rgba(255,255,255,.18);color:#fff}
+/* Review cards */
+#reviews .review-card{border:1px solid #dce5f0;background:#fff;box-shadow:0 8px 24px rgba(18,42,76,.06)}
+#reviews .review-card:hover{border-color:#9bb9ea;box-shadow:0 20px 44px rgba(23,62,117,.12)}
+#reviews .review-card:before{background:linear-gradient(90deg,#1577b5,#63ac4a,transparent)}
+#reviews .review-feature{border-color:#c9e1f1;background:linear-gradient(150deg,#fff 0%,#eaf5fb 100%)}
+#reviews .review-feature:after{color:rgba(26,140,208,.08)}
+#reviews .review-card-top .mono{color:#64748b}
+#reviews .review-stars{color:#f59e0b}
+#reviews .review-card blockquote{color:#334155}
+#reviews .review-card blockquote b{color:#126da8}
+#reviews .review-by b{color:#0f1b33}
+#reviews .review-by small{color:#64748b}
+/* Bottom links */
+#reviews .review-bottom a{color:#126da8;font-weight:600}
+#reviews .review-bottom a span{color:#1577b5}
+#reviews .review-bottom a:hover{color:#0a0f1d}
+#reviews .review-feature:after{display:none}
+/* Typewriter effect in the video review card */
+.type-rest{visibility:hidden}
+.type-caret{display:inline-block;width:2px;height:1em;margin:0 1px 0 2px;vertical-align:-.14em;background:currentColor;animation:type-caret-blink 1s steps(1) infinite}
+.type-caret[hidden]{display:none}
+.type-caret-done{animation:type-caret-fade .6s ease forwards}
+@keyframes type-caret-blink{50%{opacity:0}}
+@keyframes type-caret-fade{to{opacity:0}}
+/* Blog cover images */
+.blog-thumb{overflow:hidden}
+.blog-thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.75,.25,1)}
+.blog-card:hover .blog-thumb img{transform:scale(1.04)}
+
+/* Client logo strip: every pill identical (feedback #2: "differences in this logo") */
+.client-inner .logo-track span,
+.client-inner .logo-track span:nth-of-type(n){min-width:170px;padding:12px 18px;text-align:center;color:#334155;border-color:#dce5f1;background:#fff;font:800 14px/1.2 var(--display);letter-spacing:.06em}
+.client-inner .logo-track i{color:#94a3b8}
+@media(max-width:700px){.client-inner .logo-track span,.client-inner .logo-track span:nth-of-type(n){min-width:140px;font-size:12px}}
+
+/* ===== SVG icons (replacing text-character icons) ===== */
+.ico{display:inline-block;width:1em;height:1em;flex:none;vertical-align:-.125em}
+.service-card .service-icon .ico{width:20px;height:20px}
+.advantage-symbol .ico{width:19px;height:19px}
+.audit-icon .ico{width:15px;height:15px}
+.chevron{display:inline-flex;align-items:center}.chevron .ico{width:14px;height:14px}
+.button .ico,.case-link .ico,.service-link .ico,.advantage-main>a .ico,.review-bottom a .ico,.blog-link .ico{width:15px;height:15px}
+.service-link span .ico{width:13px;height:13px}
+.footer-legal nav a .ico{width:10px;height:10px;vertical-align:0}
+/* Star rows */
+.rating-stars,.review-stars,.rating-score>span{display:inline-flex;align-items:center;gap:2px;letter-spacing:0}
+.rating-stars .ico{width:11px;height:11px}
+.review-stars .ico{width:13px;height:13px}
+.rating-score>span .ico{width:14px;height:14px}
+/* Small marks */
+.logo-track i{display:inline-flex}.logo-track i .ico{width:11px;height:11px}
+.cta-proof-strip span .ico{width:12px;height:12px}
+.audit-footnote span{display:inline-flex}.audit-footnote .ico{width:13px;height:13px}
+.video-review-kicker{display:flex;align-items:center;gap:8px;color:#c7d8ff}.video-review-kicker .ico{width:11px;height:11px}
+/* CSS-drawn icons as SVG */
+.service-card li:before{content:"";background:#e5f2fa url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%232563eb%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%206%209%2017l-5-5%22%2F%3E%3C%2Fsvg%3E") center/9px no-repeat}
+.service-card:nth-child(2) li:before{background:#e6f4df url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%230786a4%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%206%209%2017l-5-5%22%2F%3E%3C%2Fsvg%3E") center/9px no-repeat}
+.service-card:nth-child(4) li:before{background:#ecf6e8 url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23168452%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%206%209%2017l-5-5%22%2F%3E%3C%2Fsvg%3E") center/9px no-repeat}
+.hero-trust-mark i:after{content:"";width:9px;height:9px;background:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23168452%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%206%209%2017l-5-5%22%2F%3E%3C%2Fsvg%3E") center/contain no-repeat}
+.faq-list summary:after{content:"";background:#eaf5fb url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%232563eb%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%205v14M5%2012h14%22%2F%3E%3C%2Fsvg%3E") center/14px no-repeat}
+.faq-list details[open] summary:after{background:#1577b5 url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M12%205v14M5%2012h14%22%2F%3E%3C%2Fsvg%3E") center/14px no-repeat}
+
+/* ===== Font: Poppins everywhere (body, headings, labels, numbers) ===== */
+:root{--sans:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;--display:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif;--mono:'Poppins',system-ui,-apple-system,'Segoe UI',sans-serif}
+/* Poppins runs wider than Plus Jakarta: ease the tight heading tracking so letters don't touch */
+.hero h1,.section-heading h2,.case-copy h2,.founder-copy h2,.footer-cta h2{letter-spacing:-.025em}
+.advantage-card h3,.service-card h3,.award-copy b,.blog-body h3,.faq-list summary,.video-review-title{letter-spacing:-.01em}
+/* Labels that were monospace: keep them small, uppercase and tracked */
+.mono,.section-index,.eyebrow,.eyebrow-light,.service-number,.advantage-id,.review-card-top .mono,.award-copy span,.blog-tag,.cta-kicker,.footer-time-label,.video-review-label{font-weight:600}
+.proof-value,.rating-score,.case-stats b,.case-chart-head b,.advantage-proof b{font-weight:700;letter-spacing:-.01em}
+
+/* Hero: remove the tinted background panel behind the eyebrow/headline (it was clipped into a hard-edged box) */
+.hero:before{display:none}
+.hero .eyebrow{background:none}
+
+/* Smooth scroll: Lenis drives scrolling, so native smooth-scroll must be off to avoid fighting it */
+html.lenis,html.lenis body{height:auto}
+html.lenis.lenis-smooth{scroll-behavior:auto!important}
+/* Lighter sticky header blur: heavy backdrop blur is a common cause of scroll stutter */
+.header{backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+
+/* ===== Logo colours: blue #1A8CD0 + green #63AC4A ===== */
+:root{--brand-blue:#1a8cd0;--brand-blue-ui:#1577b5;--brand-green:#63ac4a;--brand-green-text:#3d8228}
+/* Hero accent runs blue -> green, like the logo mark */
+.hero h1 span{background:linear-gradient(100deg,#1a8cd0 0%,#1a8cd0 45%,#63ac4a 100%);background-size:100% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:none}
+/* Large heading accents use the exact logo blue (large text, readable at this size) */
+.section-heading h2 span,#reviews .section-heading h2 span,#why-tanot .section-heading h2 span,.founder-copy h2 span,.faq-inner h2 span.accent,.awards-section h2 span.accent{color:#1a8cd0}
+.blog-section .section-heading h2 span{color:var(--brand-green-text)}
+/* Thin accent bars and progress lines: blue -> green */
+.audit-card:before,.service-card:before,.review-card:before{background:linear-gradient(90deg,#1a8cd0,#63ac4a)}
+/* Small label dot + kicker in logo green */
+.eyebrow>i{background:#63ac4a;box-shadow:0 0 0 4px rgba(99,172,74,.15)}
+/* Proof numbers: the + / % in logo green */
+.proof-value span{color:#63ac4a}
+/* Why Tanot main card: logo blue with a soft green glow */
+#why-tanot .advantage-main{background:radial-gradient(circle at 85% 8%,rgba(99,172,74,.35),transparent 42%),linear-gradient(150deg,#1a8cd0 0%,#1577b5 55%,#0c4a73 100%);border-color:#1577b5;box-shadow:0 22px 50px rgba(26,140,208,.28)}
+#why-tanot .advantage-main h3 em{color:#c9f0b8}
+#reviews .video-review{border-color:#1577b5}
+#reviews .video-review-copy{background:radial-gradient(circle at 85% 8%,rgba(99,172,74,.3),transparent 42%),linear-gradient(150deg,#1a8cd0 0%,#1577b5 55%,#0c4a73 100%)}
+
+/* Why Tanot main card: "how pricing works" illustration */
+#why-tanot .advantage-main:before{display:none}
+#why-tanot .advantage-main{padding-top:52px}
+.pay-flow{position:relative;z-index:1;width:100%;margin-bottom:auto;padding:14px;border:1px solid rgba(255,255,255,.22);border-radius:12px;background:rgba(255,255,255,.1);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);box-shadow:0 14px 34px rgba(8,40,70,.25)}
+.pay-step{position:relative;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;padding:9px 6px}
+.pay-step+.pay-step{border-top:1px dashed rgba(255,255,255,.18)}
+.pay-step-icon,.pay-invoice-icon{width:34px;height:34px;display:grid;place-items:center;border-radius:9px;background:rgba(255,255,255,.16);color:#fff}
+.pay-step-icon .ico,.pay-invoice-icon .ico{width:17px;height:17px}
+.pay-step-label{color:#fff;font-size:13px;font-weight:500;line-height:1.3}
+.pay-step-label small{display:block;margin-bottom:2px;color:#bfe0f5;font-size:9px;font-weight:600;letter-spacing:.12em}
+.pay-pill{display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:999px;background:#63ac4a;color:#fff;font-size:11px;font-weight:600;white-space:nowrap;box-shadow:0 4px 12px rgba(61,130,40,.35)}
+.pay-pill .ico{width:11px;height:11px}
+.pay-invoice{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;margin-top:10px;padding:11px 10px;border-radius:10px;background:#fff;color:#0f1b33}
+.pay-invoice-icon{background:#e5f2fa;color:#1577b5}
+.pay-invoice b{display:block;font-size:13px;line-height:1.2}
+.pay-invoice small{color:#64748b;font-size:11px}
+.pay-zero{padding:4px 9px;border-radius:6px;background:#ecf6e8;color:#3d8228;font-size:11px;font-weight:700;white-space:nowrap}
+/* Gentle reveal: steps tick in one after another when the card appears */
+.advantage-grid.reveal-ready .advantage-main .pay-step,.advantage-grid.reveal-ready .advantage-main .pay-invoice{opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s cubic-bezier(.2,.75,.25,1)}
+.advantage-grid.reveal-ready .advantage-main.in-view .pay-step,.advantage-grid.reveal-ready .advantage-main.in-view .pay-invoice{opacity:1;transform:none}
+.advantage-main.in-view .pay-step:nth-child(1){transition-delay:.25s}.advantage-main.in-view .pay-step:nth-child(2){transition-delay:.45s}.advantage-main.in-view .pay-step:nth-child(3){transition-delay:.65s}.advantage-main.in-view .pay-invoice{transition-delay:.9s}
+@media(prefers-reduced-motion:reduce){.advantage-grid.reveal-ready .advantage-main .pay-step,.advantage-grid.reveal-ready .advantage-main .pay-invoice{opacity:1;transform:none;transition:none}}
+@media(max-width:480px){.pay-step-label{font-size:12px}.pay-pill{padding:3px 7px;font-size:10px}}
+#why-tanot .advantage-main .advantage-symbol{display:none}
+#why-tanot .advantage-main h3{margin-top:24px}

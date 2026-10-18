@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="13 White Hat SEO Techniques">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a0f1d"/><stop offset=".6" stop-color="#1e293b"/><stop offset="1" stop-color="#126da8"/></linearGradient>
+    <radialGradient id="glow" cx=".78" cy=".32" r=".45"><stop offset="0" stop-color="#93c5fd" stop-opacity=".35"/><stop offset="1" stop-color="#93c5fd" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse"><path d="M64 0H0V64" fill="none" stroke="#fff" stroke-opacity=".06" stroke-width="2"/></pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/><rect width="1600" height="900" fill="url(#grid)"/><rect width="1600" height="900" fill="url(#glow)"/>
+  <g transform="translate(1360 310) scale(.78)">
+    <path d="M0-190L150-130V-10C150 90 85 160 0 195C-85 160-150 90-150-10V-130Z" fill="#fff" fill-opacity=".1" stroke="#fff" stroke-width="12" stroke-opacity=".85" stroke-linejoin="round"/>
+    <path d="M-62 5L-15 52L70-48" fill="none" stroke="#9fd68b" stroke-width="26" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g font-family="Helvetica Neue, Arial, sans-serif" fill="#fff">
+    <rect x="110" y="120" width="130" height="56" rx="28" fill="#fff" fill-opacity=".14"/>
+    <text x="175" y="158" text-anchor="middle" font-size="28" font-weight="700" letter-spacing="4">SEO</text>
+    <text x="110" y="420" font-size="124" font-weight="800" letter-spacing="-4">13 White Hat</text>
+    <text x="110" y="550" font-size="124" font-weight="800" letter-spacing="-4">SEO Techniques</text>
+    <text x="114" y="650" font-size="44" font-weight="500" fill-opacity=".8">Rank higher on Google &amp; AI search</text>
+  </g>
+</svg>
