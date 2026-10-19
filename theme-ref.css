@@ -1,0 +1,347 @@
+/* =====================================================================
+   Reference theme — navy headings with a blue accent word, blue pill
+   labels, light-grey / white alternating sections, bright blue bands,
+   dark navy header + hero, rounded white cards and a dark footer.
+   Loaded last; only restyles, never changes content.
+   ===================================================================== */
+:root{
+  --ref-navy:#1b1f5e;
+  --ref-navy-deep:#14174a;
+  --ref-blue:#3f8ef0;
+  --ref-blue-btn:#2d7ee6;
+  --ref-blue-btn-hover:#1f6fd6;
+  --ref-gray:#f5f6f8;
+  --ref-line:#e4e8ef;
+  --ref-text:#3b4254;
+  --ref-muted:#6b7385;
+  --ref-radius:12px;
+  --ref-shadow:0 10px 30px -12px rgba(27,31,94,.18);
+  --blue:var(--ref-blue-btn);
+  --brand-blue-ui:var(--ref-blue-btn);
+  --surface:var(--ref-gray);
+  --text:var(--ref-navy);
+  --text-2:var(--ref-text);
+  --text-3:var(--ref-muted);
+  --ref-dash:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20600%20400%22%20fill%3D%22none%22%20stroke%3D%22%23cfd6e4%22%20stroke-width%3D%222%22%20stroke-dasharray%3D%2212%2012%22%3E%3Cpath%20d%3D%22M10%20380C120%20200%20260%2060%20590%2020%22%2F%3E%3Cpath%20d%3D%22M120%20398C260%20250%20380%20160%20598%20150%22%2F%3E%3C%2Fsvg%3E");
+}
+html,body{overflow-x:clip}
+body{color:var(--ref-text);background:#fff}
+
+/* ---------- Shared type ---------- */
+body .section-heading h2,body .founder-copy h2,body .faq-inner h2,body .awards-section h2,body .blog-section .section-heading h2{color:var(--ref-navy)!important;font-weight:600;letter-spacing:-.01em}
+body .section-heading h2 span,body .founder-copy h2 span,body .faq-inner h2 span,body .awards-section h2 span,body .section-heading h2 span.accent{color:var(--ref-blue)!important;background:none;-webkit-text-fill-color:currentColor}
+body .section-intro{color:var(--ref-text)!important}
+body .section-index{color:var(--ref-muted)!important;font-weight:500}
+body .eyebrow-light{display:inline-block;width:auto;margin-block:10px 14px;padding:6px 16px;border-radius:999px;background:var(--ref-blue)!important;color:#fff!important;font-size:10.5px;letter-spacing:.12em;line-height:1.4}
+body .featured-inner .section-index{color:var(--ref-navy)!important;font-weight:600}
+
+/* ---------- Buttons ---------- */
+body .button{border-radius:6px}
+body .button-blue,body .button-dark{border-color:transparent;background:var(--ref-blue-btn);color:#fff;box-shadow:0 8px 18px -8px rgba(45,126,230,.7)}
+body .button-blue:hover,body .button-dark:hover{background:var(--ref-blue-btn-hover);box-shadow:0 12px 24px -8px rgba(45,126,230,.75)}
+body .button-outline{border-color:var(--ref-line);background:#fff;color:var(--ref-navy)}
+body .button-outline:hover{border-color:var(--ref-blue);color:var(--ref-blue-btn)}
+
+/* ---------- Header: dark navy bar ---------- */
+body .header{background:var(--ref-navy);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
+body .header .brand img{filter:brightness(0) invert(1)}
+body .nav-links>a,body .nav-dropdown>a,body .nav-dropdown>button{color:#fff;text-transform:uppercase;font-size:12px;letter-spacing:.04em}
+body .nav-links>a:hover,body .nav-dropdown>button:hover{color:#9cc6ff}
+body .dropdown-menu{border-radius:10px}
+body .dropdown-menu a{color:var(--ref-navy);text-transform:none}
+body .header .rating-badge,body .header .rating-badge>span:last-child{color:#c9d3f2}
+body .menu-toggle{border-color:rgba(255,255,255,.3);background:transparent}
+body .menu-toggle span{background:#fff}
+@media(max-width:700px){
+  body .nav-links{border-color:rgba(255,255,255,.12);border-radius:12px;background:var(--ref-navy)}
+  body .nav-dropdown>button{border-bottom-color:rgba(255,255,255,.1)}
+  body .nav-links .dropdown-menu{background:transparent}
+  body .nav-links .dropdown-menu a{color:#dbe4ff}
+}
+
+/* ---------- Hero: dark navy with soft blue glow ---------- */
+body .hero{position:relative;isolation:isolate;overflow:visible;contain:none;background:transparent;box-shadow:none;clip-path:none}
+body .hero:before{display:block;position:absolute;z-index:-2;inset:0 calc(50% - 50vw);background:radial-gradient(ellipse at 12% 25%,rgba(63,142,240,.3),transparent 40%),radial-gradient(ellipse at 88% 80%,rgba(63,142,240,.18),transparent 40%),var(--ref-navy);content:"";pointer-events:none}
+body .hero .eyebrow{color:#c9d6ff}
+body .hero .eyebrow span{color:#9aa8d6}
+body .hero .eyebrow>i{background:var(--ref-blue);box-shadow:0 0 0 4px rgba(63,142,240,.25)}
+body .hero h1{color:#fff;font-weight:700;letter-spacing:-.02em}
+body .hero h1 span{background:none;color:#7fb4ff;-webkit-text-fill-color:currentColor;animation:none}
+body .hero .hero-description{color:#d3dbf3}
+body .hero .button-outline{border-color:rgba(255,255,255,.35);background:transparent;color:#fff}
+body .hero .button-outline:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,.08)}
+body .hero .result-proof{color:#c9d6ff}
+body .hero .hero-trust-row,body .hero .hero-trust-text,body .hero .hero-trust-mark{color:#c9d3f2}
+body .hero .hero-trust-divider{background:rgba(255,255,255,.2)}
+body .hero .audit-card{border:0;border-radius:var(--ref-radius);box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+body .hero .audit-card:before{display:none}
+body .proof-strip{border-radius:var(--ref-radius);box-shadow:var(--ref-shadow)}
+body .proof-card .proof-value{color:var(--ref-navy)}
+
+/* ---------- Client logos: white card on grey ---------- */
+body .client-section{border:0;background:var(--ref-gray)}
+body .client-inner{padding:22px 28px;border-radius:var(--ref-radius);background:#fff;box-shadow:var(--ref-shadow)}
+
+/* ---------- Reviews: grey section, open slider ---------- */
+body #reviews{background:var(--ref-gray) var(--ref-dash) no-repeat right -160px top -40px/560px}
+body #reviews .review-rating{border-color:var(--ref-line)}
+body #reviews .review-rating>p{color:var(--ref-text)}
+body #reviews .video-review{border-radius:var(--ref-radius);overflow:hidden;box-shadow:var(--ref-shadow)}
+body #reviews .review-slider{border:0;border-radius:var(--ref-radius);background:#fff;box-shadow:var(--ref-shadow)}
+body #reviews .review-bottom a{color:var(--ref-blue-btn)}
+
+/* ---------- Case study: bright blue band ---------- */
+body .case-section{background:var(--ref-blue) var(--ref-dash) no-repeat right -220px top -120px/620px;color:#fff}
+body .case-section .case-copy h2{color:#fff}
+body .case-section .case-copy h2 span{color:#dce9ff}
+body .case-section .case-copy>p:not(.eyebrow-light){color:#eaf2ff}
+body .case-section .section-index{color:#d6e6ff!important}
+body .case-section .eyebrow-light{background:#fff!important;color:var(--ref-blue-btn)!important}
+body .case-section .case-link{border-bottom-color:rgba(255,255,255,.5);color:#fff}
+body .case-section .case-link:hover{border-color:#fff;color:#fff}
+body .case-section .case-visual{border:0;border-radius:var(--ref-radius);box-shadow:0 24px 50px -20px rgba(20,23,74,.45)}
+
+/* ---------- Services (layout already reference-style) ---------- */
+body #services{background:var(--ref-gray) var(--ref-dash) no-repeat right -200px bottom -80px/600px}
+body #services .services-arch{border-radius:999px 999px 10px 10px}
+body #services .services-person{border-radius:0 0 10px 10px}
+body #services .services-bubble{border-radius:10px 10px 10px 3px}
+body #services .services-dot{border-radius:50%}
+body #services .service-card .service-icon{border-radius:12px}
+body #services .service-card li{border-radius:999px}
+
+/* ---------- Why Tanot: white with icon-circle cards ---------- */
+body #why-tanot{background:#fff}
+body #why-tanot .advantage-card{border:1px solid var(--ref-line);border-radius:var(--ref-radius);background:#fff;box-shadow:var(--ref-shadow)}
+body #why-tanot .advantage-card:hover{border-color:#c9dbf6;box-shadow:0 20px 40px -16px rgba(27,31,94,.25)}
+body #why-tanot .advantage-card h3{color:var(--ref-navy);font-weight:600}
+body #why-tanot .advantage-card p{color:var(--ref-text)}
+body #why-tanot .advantage-id{color:var(--ref-blue-btn)}
+body #why-tanot .advantage-symbol{border-radius:50%;border:0;background:var(--ref-blue);color:#fff;box-shadow:0 8px 18px -8px rgba(63,142,240,.8)}
+body #why-tanot .advantage-main{border:0;background:linear-gradient(160deg,#eaf2ff,#d9e8fe);box-shadow:var(--ref-shadow)}
+body #why-tanot .advantage-main:hover{border:0;background:linear-gradient(160deg,#e3eeff,#cfe2fd)}
+body #why-tanot .advantage-main h3 em{color:var(--ref-blue-btn)}
+body #why-tanot .pay-step,body #why-tanot .pay-invoice{border-radius:10px}
+body #why-tanot .pay-pill{border-radius:999px}
+
+/* ---------- Awards: grey band, white cards ---------- */
+body .awards-section{background:var(--ref-gray)}
+body .awards-section .section-heading{text-align:left}
+body .award-card{border:0;border-radius:var(--ref-radius);box-shadow:var(--ref-shadow)}
+body .award-card:hover{border:0;box-shadow:0 20px 40px -16px rgba(27,31,94,.25)}
+body .award-copy b{color:var(--ref-navy)}
+
+/* ---------- Founder: photo on a blue arch ---------- */
+body .founder-section{border:0;background:#fff}
+body .founder-photo{padding:28px 18px 0;border-radius:999px 999px 14px 14px;background:linear-gradient(180deg,#a9cbf7,#7fb0f2);box-shadow:var(--ref-shadow)}
+body .founder-photo img{border:0;border-radius:0 0 14px 14px;background:transparent}
+body .founder-photo figcaption{left:50%;bottom:16px;transform:translateX(-50%);white-space:nowrap;border-radius:8px;background:#fff;color:var(--ref-navy);box-shadow:0 10px 20px -8px rgba(27,31,94,.35)}
+body .founder-copy>p:not(.eyebrow-light){color:var(--ref-text)}
+body .team-grid .review-avatar{border-radius:50%}
+
+/* ---------- Featured logos: grey rounded panel ---------- */
+body .featured-section{background:#fff}
+
+/* ---------- FAQ: grey with white accordion cards ---------- */
+body #faq{background:var(--ref-gray) var(--ref-dash) no-repeat right -180px top -40px/560px}
+body .faq-list{display:grid;gap:12px;border:0}
+body .faq-list details{border:1px solid var(--ref-line);border-radius:10px;background:#fff;padding-inline:20px;box-shadow:0 4px 14px -8px rgba(27,31,94,.12)}
+body .faq-list details[open]{border-color:#c9dbf6}
+body .faq-list summary{color:var(--ref-navy);font-weight:600}
+body .faq-list summary:after{border-radius:50%}
+body .faq-list details p{padding-right:24px;color:var(--ref-text)}
+
+/* ---------- Blog: image cards with underlined uppercase titles ---------- */
+body .blog-section{background:#fff}
+body .blog-section .blog-link{color:var(--ref-blue-btn)}
+body .blog-section .blog-card{border:0;border-radius:var(--ref-radius);background:#fff;box-shadow:var(--ref-shadow)}
+body .blog-section .blog-card:hover{box-shadow:0 22px 44px -16px rgba(27,31,94,.28)}
+body .blog-section .blog-thumb{border-radius:var(--ref-radius) var(--ref-radius) 0 0;border-bottom:0}
+body .blog-section .blog-body h3{width:fit-content;padding-bottom:4px;border-bottom:2px solid var(--ref-navy);color:var(--ref-navy);font-weight:600;text-transform:uppercase;letter-spacing:.01em}
+body .blog-section .blog-tag,body .blog-section .blog-card:nth-child(n) .blog-tag{border-radius:999px;background:var(--ref-blue);color:#fff}
+
+/* ---------- Footer CTA: blue band ---------- */
+body .footer-cta{background:var(--ref-blue) var(--ref-dash) no-repeat right -140px top -40px/620px;border:0}
+body .footer-cta-card,body .footer-cta-card:hover{border:0;border-radius:0;background:transparent;box-shadow:none}
+body .footer-cta h2{color:#fff}
+body .footer-cta h2 span{background:none;color:#dce9ff;-webkit-text-fill-color:currentColor}
+body .footer-cta .cta-subtitle,body .footer-cta p{color:#eaf2ff}
+body .footer-cta .cta-kicker{color:#fff}
+body .footer-cta .button-blue{background:var(--ref-navy);box-shadow:0 10px 20px -10px rgba(20,23,74,.8)}
+body .footer-cta .button-blue:hover{background:var(--ref-navy-deep)}
+body .footer-cta input,body .footer-cta select{border-radius:6px}
+body .cta-proof-strip span{color:#eaf2ff}
+
+/* ---------- Footer: dark ---------- */
+body .mega-footer{--text:#fff;--text-2:#c4cad6;--text-3:#9aa3b4;border-top:0;background:#101018;color:#fff}
+body .mega-footer .mega-brand img,body .mega-footer .mega-logo-wrap img{filter:brightness(0) invert(1)}
+body .mega-footer a{color:#c4cad6}
+body .mega-footer a:hover{color:#fff}
+body .mega-footer h2,body .mega-footer h3,body .mega-footer h4{color:#fff}
+body .mega-footer .footer-legal,body .mega-footer .compliance-block,body .mega-footer .footer-dispatch{border-top-color:rgba(255,255,255,.12)}
+body .mega-footer .legal-trust b{color:#dfe4ee}
+body .mega-footer .footer-compliance a{color:#9cc6ff!important}
+
+/* Readability fixes on the blue CTA band + dark footer */
+body .footer-cta .cta-proof-strip span{border:1px solid rgba(255,255,255,.45)!important;border-radius:999px;background:rgba(255,255,255,.12)!important;color:#fff!important}
+body .footer-cta .cta-proof-strip span *{color:#fff!important}
+body .footer-cta label,body .footer-cta .quick-audit-form small,body .footer-cta .quick-audit-form p{color:#fff!important}
+body .footer-cta .quick-audit-row{border-radius:10px}
+body .footer-cta .cta-kicker i{background:#fff}
+body .mega-footer .footer-column a,body .mega-footer .footer-explore a{color:#c4cad6!important}
+body .mega-footer .footer-column a:hover{color:#fff!important}
+body .mega-footer .footer-contact-meta,body .mega-footer .footer-contact-meta *{color:#c4cad6}
+body .mega-footer .footer-time-label,body .mega-footer .footer-column h2,body .mega-footer .footer-column h3{color:#8f9bb3}
+body .mega-footer .footer-clock{color:#fff}
+body .hero .hero-glow{display:none}
+
+/* ---------- Founder: cut-out photo rising out of a blue arch ---------- */
+body .founder-photo{position:relative;max-width:340px;padding:0;border-radius:0;background:none;box-shadow:none;isolation:isolate}
+body .founder-photo:before{position:absolute;z-index:-1;left:4%;right:4%;top:14%;bottom:0;border-radius:999px 999px 16px 16px;background:linear-gradient(180deg,#a9cbf7,#7fb0f2);box-shadow:0 22px 40px -22px rgba(27,31,94,.45);content:""}
+body .founder-photo:after{position:absolute;z-index:-1;top:8%;right:-4%;width:26px;height:26px;border-radius:50%;background:#ffb547;box-shadow:0 6px 14px -4px rgba(255,181,71,.7);content:""}
+body .founder-photo img{position:relative;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border:0;border-radius:0 0 16px 16px;background:none}
+
+/* ---------- Why Tanot: picture left, icon list right, pricing card below ---------- */
+body #why-tanot .why-layout{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);grid-template-areas:"visual head" "visual list" "main main";column-gap:clamp(40px,6vw,96px);align-items:start}
+body #why-tanot .why-visual{grid-area:visual;position:sticky;top:110px;width:100%;max-width:500px;aspect-ratio:500/560;margin-top:12px}
+body #why-tanot .why-blob{position:absolute;left:8%;right:0;top:6%;bottom:4%;border-radius:28px;background:linear-gradient(160deg,#e6efff,#d4e4fd)}
+body #why-tanot .why-photo{position:absolute;left:0;top:0;width:88%;height:auto;border-radius:24px;box-shadow:0 26px 50px -24px rgba(27,31,94,.45)}
+body #why-tanot .why-float{position:absolute;height:auto;filter:drop-shadow(0 14px 24px rgba(27,31,94,.16));animation:servicesFloat 6.5s ease-in-out infinite}
+body #why-tanot .why-float-stars{left:-9%;top:16%;width:46%}
+body #why-tanot .why-float-trend{right:-8%;bottom:-6%;width:52%;animation-delay:-3s}
+body #why-tanot .why-dot{position:absolute;border-radius:50%}
+body #why-tanot .why-dot-a{right:4%;top:-2%;width:24px;height:24px;background:var(--ref-blue);box-shadow:0 8px 16px -6px rgba(63,142,240,.8)}
+body #why-tanot .why-dot-b{left:4%;bottom:6%;width:14px;height:14px;background:#ffb547}
+body #why-tanot .section-heading{grid-area:head;display:block;margin:0 0 34px}
+body #why-tanot .section-heading .section-intro{max-width:520px;margin-top:14px}
+body #why-tanot .advantage-grid{display:contents}
+body #why-tanot .advantage-list{grid-area:list;display:grid;gap:26px}
+body #why-tanot .advantage-list .advantage-card{display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:20px;align-items:start;min-height:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
+body #why-tanot .advantage-list .advantage-card:before,body #why-tanot .advantage-list .advantage-card:after{display:none}
+body #why-tanot .advantage-list .advantage-card:hover{border:0;box-shadow:none;transform:none}
+body #why-tanot .advantage-list .advantage-card>*{grid-column:2}
+body #why-tanot .advantage-list .advantage-card>div{display:contents}
+body #why-tanot .advantage-list .advantage-symbol{position:static;grid-column:1;grid-row:1/span 4;width:48px;height:48px;margin:0;display:grid;place-items:center}
+body #why-tanot .advantage-list .advantage-symbol .ico{width:22px;height:22px}
+body #why-tanot .advantage-list .advantage-id{margin:0 0 4px;font-size:10px;letter-spacing:.12em}
+body #why-tanot .advantage-list h3{margin:0 0 6px;font-size:20px}
+body #why-tanot .advantage-list p{max-width:460px;margin:0;font-size:14.5px;line-height:1.65}
+body #why-tanot .advantage-list .advantage-proof{display:inline-flex;align-items:center;gap:10px;width:fit-content;margin-top:12px;padding:8px 16px 8px 12px;border:0;border-radius:999px;background:#eaf2ff}
+body #why-tanot .advantage-list .advantage-proof b{color:var(--ref-blue-btn);font-size:24px;line-height:1}
+body #why-tanot .advantage-list .advantage-proof small{color:var(--ref-text);font-size:11.5px;line-height:1.3}
+body #why-tanot .advantage-main{grid-area:main;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);grid-template-rows:auto auto auto 1fr;column-gap:clamp(28px,5vw,72px);align-items:start;min-height:0;margin-top:clamp(48px,6vw,80px);padding:clamp(28px,4vw,48px)}
+body #why-tanot .advantage-main>*{grid-column:1}
+body #why-tanot .advantage-main .pay-flow{grid-column:2;grid-row:1/-1;align-self:center;margin:0}
+body #why-tanot .advantage-main h3{margin-top:14px}
+body #why-tanot .advantage-main>a{align-self:start;margin-top:18px}
+@media(max-width:1000px){
+  body #why-tanot .why-layout{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "visual" "list" "main"}
+  body #why-tanot .why-visual{position:relative;top:auto;justify-self:center;max-width:420px;margin:0 0 48px}
+  body #why-tanot .advantage-main{grid-template-columns:minmax(0,1fr)}
+  body #why-tanot .advantage-main .pay-flow{grid-column:1;grid-row:auto;margin-top:24px}
+}
+@media(max-width:600px){
+  body #why-tanot .why-visual{max-width:320px}
+  body #why-tanot .why-float-stars{left:-4%}
+  body #why-tanot .why-float-trend{right:-2%}
+  body #why-tanot .advantage-list .advantage-card{grid-template-columns:42px minmax(0,1fr);column-gap:14px}
+  body #why-tanot .advantage-list .advantage-symbol{width:42px;height:42px}
+  body #why-tanot .advantage-list h3{font-size:18px}
+}
+@media(prefers-reduced-motion:reduce){body #why-tanot .why-float{animation:none}}
+body #why-tanot .advantage-list .advantage-id{position:static;inset:auto;grid-row:auto;transform:none}
+body #why-tanot .advantage-list .advantage-proof{position:static;grid-column:2;justify-self:start}
+body #why-tanot .advantage-main .advantage-id{position:static}
+body #why-tanot .advantage-main>a{width:fit-content}
+body #why-tanot .advantage-list .advantage-wide{padding:0}
+body #why-tanot .advantage-list .advantage-wide .advantage-proof{margin-left:0;margin-right:auto}
+body #why-tanot .advantage-list .advantage-wide h3{margin:0 0 6px}
+body #why-tanot .advantage-list .advantage-wide p{margin:0}
+@media(max-width:1000px){body #why-tanot .advantage-main .pay-flow{grid-row:5}}
+body #why-tanot .advantage-list .advantage-card{row-gap:0}
+
+/* =====================================================================
+   Polish pass (client feedback): one type scale, one spacing rhythm,
+   identical boxes, calmer sections.
+   ===================================================================== */
+:root{--ref-h2:clamp(28px,2.6vw,38px);--ref-h3:clamp(18px,1.4vw,20px);--section-y:88px;--heading-gap:44px}
+@media(max-width:1000px){:root{--section-y:72px;--heading-gap:36px}}
+@media(max-width:600px){:root{--section-y:56px;--heading-gap:28px}}
+
+/* One heading size + weight for every section title (case study, video, CTA were 800 and oversized) */
+body .section-heading h2,body .founder-copy h2,body .case-copy h2,body .footer-cta h2,body #faq h2{font-size:var(--ref-h2)!important;font-weight:600!important;line-height:1.2!important;letter-spacing:-.015em!important}
+body .section-heading{margin-bottom:var(--heading-gap)}
+body .section-heading.heading-split{align-items:end}
+body .video-review-title{font-size:clamp(20px,1.7vw,24px);font-weight:600;line-height:1.3}
+body .team-block h3,body .featured-inner .section-index{font-size:clamp(20px,1.6vw,24px)!important;font-weight:600!important;letter-spacing:-.01em!important}
+body .award-copy b,body .blog-section .blog-body h3{font-size:16px;line-height:1.45}
+
+/* Client logos: identical boxes, same type */
+body .client-inner{gap:32px}
+body .client-heading p,body .client-heading h2,body .client-heading b{font-size:16px;line-height:1.45;font-weight:600}
+body .logo-track>span{flex:none;width:168px;height:52px;display:inline-grid;place-items:center;padding:0 12px;border:1px solid var(--ref-line);border-radius:10px;background:#fff;color:var(--ref-navy);font-size:13px;letter-spacing:.06em;box-sizing:border-box}
+
+/* Reviews: tighter heading block and a balanced video card */
+body #reviews .video-review{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:stretch;margin-bottom:24px!important}
+body #reviews .video-review iframe{height:100%;min-height:100%;aspect-ratio:16/9}
+body #reviews .video-review-copy{justify-content:center;gap:12px;padding:clamp(22px,2.4vw,32px)}
+body #reviews .video-review-stats{gap:8px;border:0;background:none}
+body #reviews .video-review-stats li{border:1px solid var(--ref-line);border-radius:10px;background:#fff;text-align:left}
+body #reviews .review-bottom{margin-top:20px}
+
+/* Case study: copy and chart same visual weight, centred */
+body .case-section .case-inner{align-items:center;gap:clamp(36px,5vw,72px)}
+body .case-section .case-copy>p:not(.eyebrow-light){max-width:500px}
+
+/* Awards: every image shown the same way (contained on a soft panel), equal cards */
+body .award-grid{align-items:stretch}
+body .award-card{height:100%}
+body .award-img,body .award-img.cover,body .award-img.contain{aspect-ratio:4/3;padding:14px;background:#eef2f8!important}
+body .award-img img{width:100%;height:100%;object-fit:contain!important;border-radius:8px}
+body .award-copy{flex:1;padding:16px 18px 20px}
+
+/* Founder: smaller portrait, tighter team block with compact cards */
+body .founder-photo{max-width:290px}
+body .founder-inner{align-items:center}
+body .team-block{margin-top:48px;padding-top:36px}
+body .team-block h3{margin-bottom:16px}
+body .team-grid{gap:12px}
+body .team-grid li{padding:12px 14px;border-radius:10px}
+body .team-grid .review-avatar{width:40px;height:40px;font-size:12px}
+
+/* Featured on: its own band, white logo card, no stray blue bar */
+body .featured-section{padding-block:72px!important;border-block:1px solid var(--ref-line);background:var(--ref-gray)}
+body .featured-section+#faq{padding-top:var(--section-y)!important;background:#fff}
+body .featured-list{border-radius:var(--ref-radius);background:#fff!important;box-shadow:var(--ref-shadow)}
+body .featured-list::before{display:none}
+body .featured-list img.logo-raster{mix-blend-mode:normal}
+
+/* Blog: soft brand-green band so it reads as its own section */
+body .blog-section{background:#f1f8ee}
+body .blog-section .blog-card{box-shadow:0 10px 30px -14px rgba(61,130,40,.25)}
+body .blog-section .blog-body h3{border-bottom-color:#3d8228}
+body .blog-section .blog-tag,body .blog-section .blog-card:nth-child(n) .blog-tag{background:#3d8228}
+body .blog-section .eyebrow-light{background:#3d8228!important}
+body .blog-section .section-heading h2 span{color:#3d8228!important}
+body .blog-section .blog-link{color:#3d8228}
+body .client-section{padding-block:40px!important}
+
+/* FAQ accordion: icon flips back as soon as an item starts closing; smooth icon + border changes */
+body .faq-list details{transition:border-color .3s,box-shadow .3s}
+body .faq-list summary:after{transition:transform .35s cubic-bezier(.22,.7,.2,1),background-color .3s,color .3s}
+body .faq-list details.is-closing{border-color:var(--ref-line)}
+body .faq-list details.is-closing summary:after{transform:none!important;background-color:#eaf5fb!important;background-image:url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%232563eb%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M12%205v14M5%2012h14%22%2F%3E%3C%2Fsvg%3E")!important}
+
+/* Why Tanot: let the picture stick while the list scrolls (overflow:hidden blocked position:sticky) */
+body #why-tanot{overflow:clip}
+body #why-tanot .why-visual{position:sticky;top:110px;align-self:start}
+@media(max-width:1000px){body #why-tanot .why-visual{position:relative;top:auto}}
+
+/* Sticky picture is bounded by its own column, so it stops before the pricing card */
+body #why-tanot .why-visual-col{grid-area:visual;align-self:stretch;min-width:0}
+body #why-tanot .why-visual{grid-area:auto}
+@media(max-width:1000px){body #why-tanot .why-visual-col{display:flex;justify-content:center}}
+
+/* Team photos: image covers the initials circle when the file exists */
+body .team-grid .review-avatar{position:relative;overflow:hidden;flex:none}
+body .team-grid .review-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%}

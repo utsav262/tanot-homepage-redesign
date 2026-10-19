@@ -145,7 +145,7 @@ function countCaseStudy() {
   const started = performance.now();
   caseCount.textContent = '+0';
   function step(now) {
-    const progress = Math.min(1, (now - started) / 950);
+    const progress = Math.min(1, Math.max(0, (now - started) / 950));
     const eased = 1 - Math.pow(1 - progress, 3);
     caseCount.textContent = '+' + Math.round(target * eased).toLocaleString('en-US');
     if (progress < 1) requestAnimationFrame(step);
@@ -308,12 +308,16 @@ if (videoCopy) {
 
 
 // Smooth scrolling (Lenis): soft, gliding wheel/trackpad scroll and smooth in-page links.
-// Skipped when the visitor prefers reduced motion; touch devices keep their native scroll.
-if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  const lenis = new window.Lenis({ lerp: 0.09, smoothWheel: true, wheelMultiplier: 1 });
+// Always on (touch devices keep their native scroll). Re-measures once everything has loaded so the
+// scroll length is right after a refresh, when the browser restores a mid-page position.
+if (window.Lenis) {
+  const lenis = new window.Lenis({ lerp: 0.1, smoothWheel: true, wheelMultiplier: 1, autoResize: true });
   window.siteScroll = lenis;
   const raf = (time) => { lenis.raf(time); requestAnimationFrame(raf); };
   requestAnimationFrame(raf);
+  const remeasure = () => lenis.resize();
+  if (document.readyState === 'complete') remeasure(); else window.addEventListener('load', remeasure, { once: true });
+  document.querySelectorAll('img[loading="lazy"]').forEach((img) => img.addEventListener('load', remeasure, { once: true }));
   const headerOffset = () => -((document.querySelector('.header')?.offsetHeight || 80) + 12);
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener('click', (event) => {
@@ -324,6 +328,125 @@ if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').match
       event.preventDefault();
       lenis.scrollTo(target, { offset: id === '#top' ? 0 : headerOffset(), duration: 1.2 });
       history.replaceState(null, '', id);
+    });
+  });
+}
+
+// Reviews: one-at-a-time slider with arrows, dots, swipe and gentle autoplay.
+const reviewSlider = document.querySelector('.review-slider');
+if (reviewSlider) {
+  const slides = [...reviewSlider.querySelectorAll('.review-card')];
+  const dotsWrap = reviewSlider.querySelector('.review-dots');
+  let current = 0;
+  let timer;
+  const dots = slides.map((slide, index) => {
+    slide.classList.add('in-view');
+    slide.setAttribute('aria-roledescription', 'slide');
+    slide.setAttribute('aria-label', (index + 1) + ' of ' + slides.length);
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'review-dot';
+    dot.setAttribute('aria-label', 'Show review ' + (index + 1));
+    dot.addEventListener('click', () => { show(index); restart(); });
+    dotsWrap.appendChild(dot);
+    return dot;
+  });
+  function show(index) {
+    current = (index + slides.length) % slides.length;
+    slides.forEach((slide, i) => {
+      const active = i === current;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+      dots[i].classList.toggle('is-active', active);
+      dots[i].setAttribute('aria-current', active ? 'true' : 'false');
+    });
+  }
+  const autoplayDelay = 5000;
+  reviewSlider.style.setProperty('--review-autoplay', autoplayDelay + 'ms');
+  function restart() {
+    clearInterval(timer);
+    reviewSlider.classList.remove('is-paused');
+    timer = setInterval(() => show(current + 1), autoplayDelay);
+    // Restart the progress bar on the active dot.
+    const dot = dots[current];
+    dot.classList.remove('is-active');
+    void dot.offsetWidth;
+    dot.classList.add('is-active');
+  }
+  function pause() {
+    clearInterval(timer);
+    reviewSlider.classList.add('is-paused');
+  }
+  reviewSlider.querySelector('.review-prev').addEventListener('click', () => { show(current - 1); restart(); });
+  reviewSlider.querySelector('.review-next').addEventListener('click', () => { show(current + 1); restart(); });
+  reviewSlider.addEventListener('mouseenter', pause);
+  reviewSlider.addEventListener('mouseleave', restart);
+  reviewSlider.addEventListener('focusin', pause);
+  reviewSlider.addEventListener('focusout', (e) => { if (!reviewSlider.contains(e.relatedTarget)) restart(); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); else restart(); });
+  let touchX = null;
+  reviewSlider.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; pause(); }, { passive: true });
+  reviewSlider.addEventListener('touchend', (e) => {
+    if (touchX === null) return;
+    const dx = e.changedTouches[0].clientX - touchX;
+    if (Math.abs(dx) > 40) show(current + (dx < 0 ? 1 : -1));
+    restart();
+    touchX = null;
+  });
+  show(0);
+  restart();
+}
+
+// FAQ: one question open at a time, with smooth height animation on open and close.
+const faqItems = [...document.querySelectorAll('.faq-list details')];
+if (faqItems.length) {
+  const faqMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const running = new Map();
+  const easing = 'cubic-bezier(.22,.7,.2,1)';
+  const closedHeight = (item) => {
+    const style = getComputedStyle(item);
+    return item.querySelector('summary').getBoundingClientRect().height
+      + parseFloat(style.borderTopWidth) + parseFloat(style.borderBottomWidth)
+      + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+  };
+  function finish(item) {
+    running.get(item)?.cancel();
+    running.delete(item);
+    item.style.height = '';
+    item.style.overflow = '';
+  }
+  function setOpen(item, open) {
+    if (!faqMotion) { item.open = open; item.classList.remove('is-closing'); return; }
+    const from = item.getBoundingClientRect().height;
+    finish(item);
+    item.style.overflow = 'hidden';
+    if (open) {
+      item.classList.remove('is-closing');
+      item.open = true;
+    } else {
+      item.classList.add('is-closing');
+    }
+    const to = open ? item.getBoundingClientRect().height : closedHeight(item);
+    const animation = item.animate({ height: [from + 'px', to + 'px'] }, { duration: 420, easing });
+    running.set(item, animation);
+    const answer = item.querySelector('p');
+    if (answer) {
+      answer.animate(
+        open ? { opacity: [0, 1], transform: ['translateY(-6px)', 'none'] } : { opacity: [1, 0], transform: ['none', 'translateY(-6px)'] },
+        { duration: open ? 380 : 240, easing, fill: 'both' }
+      ).onfinish = (e) => e.target.cancel();
+    }
+    animation.onfinish = () => {
+      if (!open) { item.open = false; item.classList.remove('is-closing'); }
+      finish(item);
+    };
+  }
+  faqItems.forEach((item) => {
+    item.querySelector('summary').addEventListener('click', (event) => {
+      event.preventDefault();
+      const willOpen = !item.open || item.classList.contains('is-closing');
+      if (willOpen) faqItems.forEach((other) => { if (other !== item && other.open && !other.classList.contains('is-closing')) setOpen(other, false); });
+      setOpen(item, willOpen);
     });
   });
 }
