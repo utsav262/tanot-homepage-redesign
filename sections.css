@@ -67,15 +67,17 @@
 @media(max-width:900px){.founder-inner{grid-template-columns:240px minmax(0,1fr);gap:36px}.team-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:600px){.founder-inner{grid-template-columns:1fr}.founder-photo{max-width:280px}.team-grid{grid-template-columns:1fr}}
 
-/* Featured on: its own navy band */
-.featured-section{padding:48px 0;background:#0a0f1d;border-top:1px solid rgba(255,255,255,.06)}
-.featured-inner{display:grid;grid-template-columns:200px minmax(0,1fr);align-items:center;gap:32px}
-.featured-inner .section-index{color:#82a7ed}
-.featured-list{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:0;padding:0;list-style:none}
-.featured-list li{height:64px;display:grid;place-items:center;border:1px solid rgba(148,178,220,.2);border-radius:8px;background:linear-gradient(145deg,#141f34,#101727);color:#cbd5e1;font:800 17px var(--display);letter-spacing:-.01em}
-.featured-list li.ph{border-style:dashed;color:#7e8ea6;font:500 12px var(--sans)}
-@media(max-width:900px){.featured-inner{grid-template-columns:1fr;gap:18px}}
-@media(max-width:600px){.featured-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Featured on: white section, centred heading, grey logo card over a full-width blue band */
+.featured-section{padding:64px 0 72px;background:#fff;overflow:hidden;isolation:isolate}
+.featured-inner{display:flex;flex-direction:column;align-items:center;text-align:center}
+.featured-inner .section-index{order:0;color:#111827;font:800 clamp(24px,2.6vw,32px)/1.2 var(--display);letter-spacing:.01em}
+.featured-more{order:1;margin:14px 0 36px;color:#4b5563;font-size:14px;line-height:1.6}
+.featured-list{order:2;position:relative;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));align-items:center;gap:28px;width:100%;max-width:880px;margin:0;padding:44px 48px;list-style:none;border-radius:14px;background:linear-gradient(110deg,#e5e6ea 0%,#c9cacd 55%,#a6a8ac 100%);box-shadow:0 26px 44px -14px rgba(15,23,42,.35)}
+/* Blue band runs edge to edge behind the card */
+.featured-list::before{content:"";position:absolute;z-index:-1;top:26%;bottom:26%;left:50%;width:100vw;transform:translateX(-50%);background:#1a8cff}
+.featured-list li{display:grid;place-items:center;height:48px}
+@media(max-width:1000px){.featured-list{grid-template-columns:repeat(3,minmax(0,1fr));padding:36px 32px}}
+@media(max-width:600px){.featured-section{padding:48px 0 56px}.featured-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;padding:28px 20px}.featured-list::before{top:15%;bottom:15%}}
 
 /* FAQ */
 .faq-inner{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(36px,6vw,90px);align-items:start}
@@ -137,18 +139,14 @@
 .video-review-label{color:#7fb2ff;font-size:10px;letter-spacing:.12em}
 .video-review-title{margin:0;color:#fff;font:800 clamp(22px,2.2vw,28px)/1.2 var(--display);letter-spacing:-.03em}
 .video-review-text{margin:0;color:#cbd5e1;font-size:15px;line-height:1.7}
-/* As Featured On: real publication logos, all white and the same visual height */
-.featured-inner{grid-template-columns:170px minmax(0,1fr) auto}
-.featured-list li{padding:0 18px}
-.featured-list img{display:block;max-width:100%;height:26px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.82;transition:opacity .2s}
-.featured-list li:hover img{opacity:1}
+/* As Featured On: real publication logos in their own colours, same visual height */
+.featured-list img{display:block;max-width:100%;height:26px;width:auto;object-fit:contain;opacity:.9;transition:opacity .2s,transform .2s}
+.featured-list li:hover img{opacity:1;transform:translateY(-2px)}
 .featured-list img[alt="Forbes"]{height:24px}
 .featured-list img[alt="GoDaddy"]{height:24px}
-/* The Tribune is a JPG on white: invert it and screen-blend so only the white lettering shows */
-.featured-list img.logo-raster{height:30px;filter:invert(1) grayscale(1) contrast(1.4);mix-blend-mode:screen}
-.featured-more{margin:0;color:#8ea0ba;font-size:13px;white-space:nowrap}
-@media(max-width:1000px){.featured-inner{grid-template-columns:1fr}.featured-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:600px){.featured-list{grid-template-columns:repeat(2,minmax(0,1fr))}.featured-list img{height:22px}}
+/* The Tribune is a JPG on white: multiply-blend so the white box disappears into the grey card */
+.featured-list img.logo-raster{height:30px;mix-blend-mode:multiply}
+@media(max-width:600px){.featured-list img{height:22px}}
 
 /* Why Tanot: light theme (was the third navy section in a row) */
 #why-tanot{position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(180deg,#f5f8fd 0%,#eaf5fb 100%);color:var(--ink)}
@@ -377,3 +375,259 @@ html.lenis.lenis-smooth{scroll-behavior:auto!important}
   /* Video card stats stay readable */
   .video-review-copy{padding:22px 18px}
 }
+
+/* Services: open cards with a large icon tile on top, underlined title, solid check list and pill CTA */
+.services-section{background:#f5f8fd}
+.services-section .service-grid{gap:44px 28px}
+.services-section .service-card{min-height:0;padding:0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
+.services-section .service-card:before,.services-section .service-card:after{display:none}
+.services-section .service-card:hover{box-shadow:none}
+.services-section .service-card-top{display:flex;flex-direction:column-reverse;align-items:flex-start;gap:18px;margin:0}
+.services-section .service-card .service-icon{position:relative;overflow:hidden;width:100%;height:auto;aspect-ratio:16/10;border:0;border-radius:14px;background:radial-gradient(circle at 78% 22%,rgba(255,255,255,.75),transparent 42%),linear-gradient(145deg,#e6f0fb,#d3e4f6);box-shadow:none;color:var(--blue);transition:box-shadow .35s}
+.services-section .service-card .service-icon:before{position:absolute;inset:0;background:radial-gradient(rgba(21,119,181,.13) 1px,transparent 1.5px) 0 0/16px 16px;content:""}
+.services-section .service-card .icon-ai,.services-section .service-card .icon-saas,.services-section .service-card .icon-local{background:radial-gradient(circle at 78% 22%,rgba(255,255,255,.75),transparent 42%),linear-gradient(145deg,#eef7ea,#dbeed2);color:#3d8228}
+.services-section .service-card .icon-ai:before,.services-section .service-card .icon-saas:before,.services-section .service-card .icon-local:before{background-image:radial-gradient(rgba(61,130,40,.14) 1px,transparent 1.5px)}
+.services-section .service-card .service-icon .ico{position:relative;width:64px;height:64px;stroke-width:1.6;transition:transform .4s cubic-bezier(.2,.75,.25,1)}
+.services-section .service-card:hover .service-icon{transform:none;box-shadow:0 18px 36px -16px rgba(23,62,117,.35)}
+.services-section .service-card:hover .service-icon .ico{transform:scale(1.12) rotate(-4deg)}
+.services-section .service-number{color:#5b6b80;font-size:11px;letter-spacing:.1em}
+.services-section .service-card h3{width:fit-content;margin:12px 0 14px;padding-bottom:3px;border-bottom:2px solid var(--blue);color:#13213a;font-size:21px;line-height:1.3}
+.services-section .service-card h3:after{margin-left:5px;color:var(--blue);content:"›";transition:margin .25s}
+.services-section .service-card:hover h3:after{margin-left:9px}
+.services-section .service-card>p{margin:0 0 18px;color:#596a80;font-size:15px;line-height:1.7}
+.services-section .service-card ul{gap:11px;margin-bottom:26px}
+.services-section .service-card li{padding-left:26px;color:#1f2d42;font-size:14px;font-weight:500}
+.services-section .service-card:hover li{transform:none;color:#1f2d42}
+.services-section .service-card li:before,.services-section .service-card:nth-child(n) li:before{top:2px;width:17px;height:17px;background:var(--blue) url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23fff%22%20stroke-width%3D%223.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M20%206%209%2017l-5-5%22%2F%3E%3C%2Fsvg%3E") center/10px no-repeat}
+.services-section .service-link{align-self:flex-start;min-height:46px;margin-top:auto;padding:0 10px 0 24px;gap:10px;border:0;border-radius:999px;background:var(--blue);box-shadow:0 8px 18px -8px rgba(21,119,181,.6);color:#fff;font-size:13px;font-weight:600;transition:background .25s,box-shadow .25s,transform .25s}
+.services-section .service-link:hover{background:#126da8;box-shadow:0 12px 24px -8px rgba(21,119,181,.7);transform:translateY(-1px)}
+.services-section .service-link span,.services-section .service-card:hover .service-link span{width:28px;height:28px;border:0;background:rgba(255,255,255,.18);color:#fff}
+.services-section .service-card:hover .service-link span{transform:translateX(3px)}
+@media(max-width:700px){.services-section .service-grid{gap:40px 20px}.services-section .service-card h3{font-size:19px}}
+@media(max-width:480px){.services-section .service-card{min-height:0;padding:0}.services-section .service-card .service-icon{aspect-ratio:16/9}.services-section .service-card .service-icon .ico{width:52px;height:52px}}
+
+/* ==========================================================================
+   Minimal light theme: no navy surfaces anywhere. White / light grey
+   backgrounds, slate text, brand blue as the single accent.
+   ========================================================================== */
+:root{--surface:#f7f9fc;--border:#e5e9f0;--text:#111827;--text-2:#4b5563;--text-3:#6b7280}
+
+/* Hero: light grey band edge to edge; the stats strip sits across its bottom edge */
+.hero{padding-bottom:118px;background:var(--surface);box-shadow:0 0 0 100vmax var(--surface);clip-path:inset(0 -100vmax)}
+.hero-glow{display:none}
+.audit-card{border-color:var(--border);box-shadow:0 12px 32px -12px rgba(17,24,39,.12)}
+.audit-card:hover{border-color:#d5dce6;box-shadow:0 16px 40px -12px rgba(17,24,39,.16)}
+.proof-strip{margin-top:-44px;border-color:var(--border);box-shadow:0 10px 28px -12px rgba(17,24,39,.14)}
+@media(max-width:900px){.hero{padding-bottom:128px}.proof-strip{margin-top:-86px}}
+@media(max-width:700px){.hero{padding-bottom:116px}.proof-strip{margin-top:-76px}}
+
+/* Video review */
+#reviews .video-review{border-color:var(--border);background:#fff;box-shadow:0 10px 28px -14px rgba(17,24,39,.14)}
+#reviews .video-review-copy{background:var(--surface)}
+#reviews .video-review-kicker,#reviews .video-review-label{color:var(--blue)}
+#reviews .video-review-title{color:var(--text)}
+#reviews .video-review-text,#reviews .video-review-more{color:var(--text-2)}
+#reviews .video-review-stats{border-color:var(--border);background:var(--border)}
+#reviews .video-review-stats li{background:#fff}
+#reviews .video-review-stats b{color:var(--text)}
+#reviews .video-review-stats span{color:var(--text-3)}
+#reviews .video-review-copy .review-by{border-top-color:var(--border)}
+#reviews .video-review-copy .review-by b{color:var(--text)}
+#reviews .video-review-copy .review-by small{color:var(--text-3)}
+#reviews .video-review-copy .review-avatar{background:#e8f2fa;color:var(--blue)}
+
+/* Case study */
+.case-section{background:var(--surface);color:var(--text)}
+.case-section:before,.case-visual:after{display:none}
+.case-section .case-copy .eyebrow-light{color:var(--text-3)}
+.case-section .case-copy h2{color:var(--text)}
+.case-section .case-copy h2 span{color:var(--blue)}
+.case-section .case-copy>p:not(.eyebrow-light){color:var(--text-2)}
+.case-section .case-link{border-bottom-color:rgba(21,119,181,.3);color:var(--blue)}
+.case-section .case-link:hover{border-color:var(--blue);color:#126da8}
+.case-section .case-visual{border:1px solid var(--border);background:#fff;box-shadow:0 10px 28px -14px rgba(17,24,39,.14)}
+.case-section .case-visual:hover{border-color:#d5dce6;box-shadow:0 16px 36px -14px rgba(17,24,39,.18)}
+.case-section .case-chart-head{color:var(--text-3)}
+.case-section .case-chart-head b{color:var(--blue)}
+.case-section .case-bars{border-color:var(--border);background:repeating-linear-gradient(to bottom,transparent 0,transparent 42px,rgba(17,24,39,.06) 43px,rgba(17,24,39,.06) 44px)}
+.case-section .case-bars i{background:var(--blue);box-shadow:none}
+.case-section .case-bars i:nth-child(2n){background:#4a9bd0}
+.case-section .case-chart-labels{color:#9ca3af}
+.case-section .case-stats{border-top-color:var(--border)}
+.case-section .case-stats div{border-left-color:var(--border)}
+.case-section .case-stats b{color:var(--text)}
+.case-section .case-stats span{color:var(--text-3)}
+
+/* Why Tanot: the "no upfront payment" card */
+#why-tanot .advantage-main,#why-tanot .advantage-main:hover{border:1px solid #d6e5f2;background:#f1f7fc;box-shadow:none}
+#why-tanot .advantage-main .advantage-id{color:var(--blue)}
+#why-tanot .advantage-main h3{color:var(--text)}
+#why-tanot .advantage-main h3 em{color:var(--blue)}
+#why-tanot .advantage-main p{color:var(--text-2)}
+#why-tanot .advantage-main>a{border-bottom-color:rgba(21,119,181,.35);color:var(--blue)}
+.pay-flow{border-color:var(--border);background:#fff;backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 6px 18px -10px rgba(17,24,39,.12)}
+.pay-step+.pay-step{border-top-color:var(--border)}
+.pay-step-icon{background:#eaf3fa;color:var(--blue)}
+.pay-step-label{color:var(--text)}
+.pay-step-label small{color:var(--text-3)}
+.pay-pill{box-shadow:none}
+.pay-invoice{border:1px solid var(--border);background:var(--surface)}
+
+/* Founder */
+.button-dark{background:var(--blue)}
+.button-dark:hover{background:#126da8}
+.founder-photo figcaption{background:rgba(255,255,255,.92);color:var(--text)}
+
+/* FAQ "Still deciding?" box */
+.faq-cta{border-color:var(--border);background:var(--surface);color:var(--text)}
+.faq-cta p{color:var(--text-2)}
+
+/* Footer CTA card */
+.footer-cta-card,.footer-cta-card:hover{border-color:var(--border);background:var(--surface);box-shadow:none}
+.footer-cta-card:before,.footer-cta-card:after,.cta-decoration{display:none}
+.footer-cta h2{color:var(--text)}
+.footer-cta h2 span{background:none;color:var(--blue);-webkit-text-fill-color:currentColor}
+.footer-cta .cta-subtitle{color:var(--text-2)}
+.cta-kicker i{box-shadow:none}
+.quick-audit-form>label{color:var(--text-3)}
+.quick-audit-row{border-color:#d5dce6;background:#fff;backdrop-filter:none;box-shadow:none}
+.quick-audit-row:focus-within{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(21,119,181,.12)}
+.quick-audit-row input{color:var(--text)}
+.quick-audit-row input::placeholder{color:#9ca3af}
+.quick-audit-form>p{color:var(--text-3)}
+.cta-proof-strip{border-top-color:var(--border)}
+.cta-proof-strip span,.cta-proof-strip span:hover{border-color:var(--border);background:#fff;color:#3d8228;box-shadow:none}
+.cta-proof-strip b{color:#374151}
+
+/* Footer */
+.mega-footer{border-top:1px solid var(--border);background:var(--surface);color:var(--text)}
+.mega-footer:before,.brand-live-dot{display:none}
+.footer-watermark{color:rgba(17,24,39,.03)}
+.mega-brand{padding:0;background:none}
+.footer-column h2,.mega-footer-grid-simple .footer-column h2{color:var(--text-3)}
+.footer-column>a:not(.mega-brand),.mega-footer-grid-simple .footer-explore>a{color:#374151}
+.footer-column>a:not(.mega-brand):hover,.mega-footer-grid-simple .footer-explore>a:hover{color:var(--blue)}
+.footer-column>a small{color:var(--text-3)}
+.footer-brand-column .footer-bio,.mega-footer-grid-simple .footer-brand-column .footer-bio,.footer-newsletter>p{color:var(--text-2)}
+.footer-compliance,.footer-time-label,.footer-location-label,.compliance-block .mono,.footer-dispatch>p,.footer-ops .channel-note,.newsletter-status{color:var(--text-3)}
+.compliance-block p,.footer-ops>p,.footer-contact-meta p,.copy-email-row>a{color:#374151}
+.footer-clock,.footer-dispatch>b{color:var(--text)}
+.compliance-block,.footer-dispatch{border-top-color:var(--border)}
+.channel-link,.mega-footer-grid-simple .channel-link{color:var(--blue)!important}
+.copy-email{border-color:#d5dce6;background:#fff;color:#4b5563}
+.newsletter-input{border-color:#d5dce6;background:#fff}
+.newsletter-input input{color:var(--text)}
+.footer-legal{border-top-color:var(--border);color:var(--text-3)}
+.legal-trust b{color:#9ca3af}
+.footer-legal nav a{color:#4b5563}
+.footer-legal nav a:hover{color:var(--text)}
+
+/* Stats strip: same sky-blue band as "As Featured On", running edge to edge behind the middle of the strip.
+   The strip itself is transparent so the band sits above it but below the white cards. */
+.proof-strip{background:transparent}
+.proof-strip:before{position:absolute;z-index:-1;top:30%;bottom:30%;left:50%;width:100vw;transform:translateX(-50%);background:#1a8cff;content:"";pointer-events:none}
+.proof-card{background:#fff}
+.proof-card:first-child{border-radius:8px 0 0 8px}
+.proof-card:last-child{border-radius:0 8px 8px 0}
+@media(max-width:900px){
+  .proof-strip:before{top:42%;bottom:42%}
+  .proof-card:first-child{border-radius:8px 0 0 0}
+  .proof-card:nth-child(2){border-radius:0 8px 0 0}
+  .proof-card:nth-child(3){border-radius:0 0 0 8px}
+  .proof-card:last-child{border-radius:0 0 8px 0}
+}
+
+/* Stats strip inner layout: centred stat, large blue number over a plain label, no dividers */
+.proof-strip{border-radius:14px}
+.proof-strip .proof-card{min-height:0;padding:24px 16px 22px;flex-direction:column;justify-content:center;gap:6px;border:0;text-align:center}
+.proof-strip .proof-card:hover{transform:none;border-color:transparent;box-shadow:none}
+.proof-strip .proof-value{color:var(--blue);font:700 clamp(28px,2.6vw,36px)/1.1 var(--display);letter-spacing:-.01em}
+.proof-strip .proof-value span{color:inherit;font-size:inherit}
+.proof-strip .proof-label{max-width:none;color:var(--text-2);font-size:14px;line-height:1.4}
+.proof-strip .proof-card:first-child{border-radius:14px 0 0 14px}
+.proof-strip .proof-card:last-child{border-radius:0 14px 14px 0}
+@media(max-width:900px){
+  .proof-strip .proof-card{padding:20px 12px 18px}
+  .proof-strip .proof-card:first-child{border-radius:14px 0 0 0}
+  .proof-strip .proof-card:nth-child(2){border-radius:0 14px 0 0}
+  .proof-strip .proof-card:nth-child(3){border-radius:0 0 0 14px}
+  .proof-strip .proof-card:last-child{border-radius:0 0 14px 0}
+}
+@media(max-width:480px){.proof-strip .proof-value{font-size:26px}.proof-strip .proof-label{font-size:12.5px}}
+/* Narrower stats strip, centred */
+.proof-strip.shell{max-width:1080px}
+
+/* Light sky-blue header and footer. Muted text is darkened a step so it stays readable on the tint */
+.header{background:rgba(227,240,251,.96);border-bottom-color:#c9e0f4}
+.mega-footer{--text-2:#374151;--text-3:#46515f;border-top-color:#bcd8f0;background:#d6e9f8}
+.mega-footer .footer-legal,.mega-footer .compliance-block,.mega-footer .footer-dispatch{border-top-color:#bcd8f0}
+.mega-footer .legal-trust b{color:#4a5462}
+
+/* Founder: photo on the right, copy on the left (photo returns to the top on phones) */
+.founder-inner{grid-template-columns:minmax(0,1fr) 320px}
+.founder-photo{order:2}
+@media(max-width:900px){.founder-inner{grid-template-columns:minmax(0,1fr) 240px}}
+@media(max-width:600px){.founder-inner{grid-template-columns:1fr}.founder-photo{order:0}}
+.header .rating-badge>span:last-child{color:#475569}
+.mega-footer .footer-compliance a{color:#0f5f92!important}
+
+/* ==========================================================================
+   Spacing system: one vertical rhythm for every section.
+   --section-y  : top/bottom padding of every full-width section
+   --heading-gap: space between a section heading and its content
+   ========================================================================== */
+:root{--section-y:96px;--heading-gap:48px;--block-gap:56px}
+@media(max-width:1000px){:root{--section-y:76px;--heading-gap:40px;--block-gap:44px}}
+@media(max-width:600px){:root{--section-y:60px;--heading-gap:32px;--block-gap:36px}}
+
+/* Every full-width section gets the same top/bottom padding */
+.section,.case-section,.founder-section,.featured-section,.footer-cta{padding-block:var(--section-y)}
+.section-heading{margin-bottom:var(--heading-gap)}
+.faq-inner .section-heading{margin-bottom:24px}
+
+/* Hero: drop the forced min-height so content isn't floating in empty space;
+   the bottom padding leaves room for the stats strip that overlaps its edge */
+.hero{min-height:0;padding-top:72px;padding-bottom:calc(72px + 44px)}
+@media(max-width:900px){.hero{padding-top:56px;padding-bottom:calc(56px + 86px)}}
+@media(max-width:700px){.hero{padding-top:44px;padding-bottom:calc(44px + 76px)}}
+
+/* Stats strip -> trust logos: a moderate gap, not a full section */
+.proof-strip{margin-bottom:var(--block-gap)}
+.client-section{padding-block:32px}
+@media(max-width:600px){.client-section{padding-block:26px}}
+
+/* Founder -> team: same block gap */
+.team-block{margin-top:var(--block-gap);padding-top:var(--block-gap)}
+
+/* "As featured on": heading -> subtitle -> card */
+.featured-more{margin:12px 0 32px}
+
+/* Footer */
+.mega-footer-inner{padding-top:var(--block-gap)}
+.mega-footer-grid-simple{padding-bottom:40px}
+@media(max-width:600px){.mega-footer-grid-simple{padding-bottom:28px}}
+
+/* Adjacent sections that share a background would double the gap; keep backgrounds alternating
+   and split the padding where two white sections meet */
+.services-section{background:#fff}
+.featured-section{padding-bottom:calc(var(--section-y) / 2)}
+.featured-section+#faq{padding-top:calc(var(--section-y) / 2)}
+
+/* Blog: same light theme as the rest of the page (blue accent instead of the green section) */
+.blog-section{background:var(--surface)}
+.blog-section .section-index{color:var(--blue)}
+.blog-section .eyebrow-light{color:var(--text-3)}
+.blog-section .section-heading h2,.blog-section .section-heading h2 span{color:var(--text)}
+.blog-section .section-heading h2 span{color:var(--blue)}
+.blog-section .blog-link{display:inline-flex;align-items:center;gap:8px;color:var(--blue);transition:gap .2s,color .2s}
+.blog-section .blog-link:hover{gap:12px;color:#126da8}
+.blog-section .blog-grid{gap:24px}
+.blog-section .blog-card{border-color:var(--border);border-radius:12px;box-shadow:0 1px 2px rgba(17,24,39,.04)}
+.blog-section .blog-card:hover{border-color:#d5dce6;box-shadow:0 16px 36px -14px rgba(17,24,39,.18)}
+.blog-section .blog-thumb{background:#eef5fc;border-bottom:1px solid var(--border)}
+.blog-section .blog-body{gap:12px;padding:20px 22px 22px}
+.blog-section .blog-tag{background:#e8f2fa;color:var(--blue)}
+.blog-section .blog-card:nth-child(2) .blog-tag{background:#ecf6e8;color:#3d8228}
+.blog-section .blog-body h3{color:var(--text)}
+.blog-section .blog-body small{color:var(--text-3)}
+@media(max-width:600px){.blog-section .blog-grid{gap:16px}}

@@ -17,7 +17,7 @@ function normalizeWebsite(value = urlInput.value) {
   try {
     const parsed = new URL(normalized);
     if (parsed.hostname.includes('.') && !parsed.hostname.includes(' ')) return parsed.href;
-  } catch (error) {}
+  } catch (error) { }
   return '';
 }
 formFields.forEach(([id]) => document.querySelector(id).addEventListener('input', () => { formError.textContent = ''; }));
@@ -56,8 +56,8 @@ footerAuditForm.addEventListener('submit', (event) => {
   formStep.hidden = false;
   status.textContent = 'Website added. Fill in the rest of the form to get your free SEO strategy.';
   if (window.siteScroll) window.siteScroll.scrollTo('#audit', { offset: -110 });
-  else document.querySelector('#audit').scrollIntoView({behavior: 'smooth', block: 'center'});
-  document.querySelector('#audit-first').focus({preventScroll: true});
+  else document.querySelector('#audit').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  document.querySelector('#audit-first').focus({ preventScroll: true });
 });
 
 document.querySelector('[data-copy-email]').addEventListener('click', async (event) => {
@@ -93,7 +93,7 @@ document.querySelector('#newsletter-form')?.addEventListener('submit', (event) =
 
 const footerClock = document.querySelector('#india-clock');
 function updateFooterClock() {
-  footerClock.textContent = new Intl.DateTimeFormat('en-IN', {timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true}).format(new Date()).toUpperCase() + ' IST';
+  footerClock.textContent = new Intl.DateTimeFormat('en-IN', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true }).format(new Date()).toUpperCase() + ' IST';
 }
 updateFooterClock();
 setInterval(updateFooterClock, 1000);
@@ -110,7 +110,7 @@ if (serviceGrid) {
         entry.target.classList.add('in-view');
         observer.unobserve(entry.target);
       });
-    }, {threshold: 0.18});
+    }, { threshold: 0.18 });
     serviceCards.forEach((card) => cardObserver.observe(card));
   } else {
     serviceCards.forEach((card) => card.classList.add('in-view'));
@@ -129,7 +129,7 @@ if (advantageGrid) {
         entry.target.classList.add('in-view');
         observer.unobserve(entry.target);
       });
-    }, {threshold: 0.14});
+    }, { threshold: 0.14 });
     advantageCards.forEach((card) => advantageObserver.observe(card));
   } else {
     advantageCards.forEach((card) => card.classList.add('in-view'));
@@ -163,7 +163,7 @@ if (reviewGrid && caseSection) {
         entry.target.classList.add('in-view');
         observer.unobserve(entry.target);
       });
-    }, {threshold: 0.12});
+    }, { threshold: 0.12 });
     reviewCards.forEach((card) => reviewObserver.observe(card));
     caseSection.classList.add('reveal-ready');
     caseCount.textContent = '+0';
@@ -174,7 +174,7 @@ if (reviewGrid && caseSection) {
         countCaseStudy();
         observer.unobserve(entry.target);
       });
-    }, {threshold: 0.2});
+    }, { threshold: 0.2 });
     caseObserver.observe(caseSection);
   } else {
     reviewCards.forEach((card) => card.classList.add('in-view'));
@@ -191,7 +191,7 @@ if ('IntersectionObserver' in window && !prefersReducedMotion) {
       footerCtaCard.classList.add('is-visible');
       observer.unobserve(entry.target);
     });
-  }, {threshold: 0.18});
+  }, { threshold: 0.18 });
   ctaObserver.observe(footerCtaCard);
 } else {
   footerCtaCard.classList.add('is-visible');
@@ -211,7 +211,7 @@ if ('IntersectionObserver' in window && !prefersReducedMotion) {
       entry.target.classList.add('is-visible');
       observer.unobserve(entry.target);
     });
-  }, {threshold: 0.25});
+  }, { threshold: 0.25 });
   proofCards.forEach((card) => proofObserver.observe(card));
 } else {
   proofCards.forEach((card) => card.classList.add('is-visible'));
@@ -225,7 +225,7 @@ if ('IntersectionObserver' in window && !prefersReducedMotion) {
       entry.target.classList.add('is-revealed');
       observer.unobserve(entry.target);
     });
-  }, {threshold: 0.12, rootMargin: '0px 0px -24px 0px'});
+  }, { threshold: 0.12, rootMargin: '0px 0px -24px 0px' });
   scrollRevealTargets.forEach((target, index) => {
     target.style.setProperty('--scroll-order', index % 4);
     target.classList.add('scroll-reveal');
