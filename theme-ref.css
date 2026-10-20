@@ -271,7 +271,7 @@ body #why-tanot .advantage-list .advantage-card{row-gap:0}
 /* One heading size + weight for every section title (case study, video, CTA were 800 and oversized) */
 body .section-heading h2,body .founder-copy h2,body .case-copy h2,body .footer-cta h2,body #faq h2{font-size:var(--ref-h2)!important;font-weight:600!important;line-height:1.2!important;letter-spacing:-.015em!important}
 body .section-heading{margin-bottom:var(--heading-gap)}
-body .section-heading.heading-split{align-items:end}
+@media(min-width:901px){body .section-heading.heading-split{align-items:end}}
 body .video-review-title{font-size:clamp(20px,1.7vw,24px);font-weight:600;line-height:1.3}
 body .team-block h3,body .featured-inner .section-index{font-size:clamp(20px,1.6vw,24px)!important;font-weight:600!important;letter-spacing:-.01em!important}
 body .award-copy b,body .blog-section .blog-body h3{font-size:16px;line-height:1.45}
@@ -345,3 +345,38 @@ body #why-tanot .why-visual{grid-area:auto}
 /* Team photos: image covers the initials circle when the file exists */
 body .team-grid .review-avatar{position:relative;overflow:hidden;flex:none}
 body .team-grid .review-avatar img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:50%}
+
+/* ===================== Mobile / tablet fixes ===================== */
+@media(max-width:900px){
+  body .section-heading.heading-split{align-items:stretch}
+  body .section-heading.heading-split>div{width:100%}
+  /* Video review stacks: video on top, copy below */
+  body #reviews .video-review{grid-template-columns:minmax(0,1fr)}
+  body #reviews .video-review iframe{height:auto;min-height:0;aspect-ratio:16/9}
+}
+@media(max-width:700px){
+  /* Decorative dashed curves run through text on small screens */
+  body #reviews,body .case-section,body #services,body #faq,body .footer-cta{background-image:none!important}
+  /* Client logos: smaller identical boxes */
+  body .client-inner{gap:20px;padding:20px 18px}
+  body .logo-track>span{width:132px;height:46px;font-size:12px}
+  /* Awards: calmer titles */
+  body .award-copy{padding:14px 14px 16px}
+  body .award-copy b{font-size:14.5px;font-weight:600;line-height:1.4}
+  body .award-copy span{font-size:9.5px}
+  /* Founder: smaller portrait */
+  body .founder-photo{max-width:240px;margin-inline:auto}
+  body .founder-actions{gap:10px}
+  /* Footer CTA: same side gutter as the rest of the page */
+  body .footer-cta-card{padding-inline:0}
+  /* Pricing card inner spacing */
+  body #why-tanot .advantage-main{padding:24px 18px}
+  body #why-tanot .pay-invoice{gap:10px}
+}
+@media(max-width:480px){
+  body .award-grid{gap:12px}
+  body #reviews .video-review-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  body #reviews .video-review-stats li{padding:10px 8px}
+}
+/* "Still deciding?" card title: same weight as other card titles */
+body .faq-cta b{font-weight:600;letter-spacing:-.01em;color:var(--ref-navy)}
